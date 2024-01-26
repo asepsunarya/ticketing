@@ -15,7 +15,7 @@ let AuthAppModule = exports.AuthAppModule = class AuthAppModule {
 exports.AuthAppModule = AuthAppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/boosticket'),
+            mongoose_1.MongooseModule.forRoot('mongodb://mongo:1fdfhgFAHe6B24EBf5GBBg3fA56aHB1G@roundhouse.proxy.rlwy.net:39285/boostticket'),
             auth_module_1.AuthModule,
         ],
     })
