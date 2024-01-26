@@ -11,7 +11,7 @@ import { UserModule } from '@/auth/modules/user/user.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://mongo:1fdfhgFAHe6B24EBf5GBBg3fA56aHB1G@roundhouse.proxy.rlwy.net:39285/boostticket',
+      'mongodb://mongo:1fdfhgFAHe6B24EBf5GBBg3fA56aHB1G@roundhouse.proxy.rlwy.net:39285',
     ),
     TicketModule,
     ProjectModule,

@@ -21,7 +21,7 @@ let AdminAppModule = exports.AdminAppModule = class AdminAppModule {
 exports.AdminAppModule = AdminAppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://mongo:1fdfhgFAHe6B24EBf5GBBg3fA56aHB1G@roundhouse.proxy.rlwy.net:39285/boostticket'),
+            mongoose_1.MongooseModule.forRoot('mongodb://mongo:1fdfhgFAHe6B24EBf5GBBg3fA56aHB1G@roundhouse.proxy.rlwy.net:39285'),
             ticket_module_1.TicketModule,
             project_module_1.ProjectModule,
             people_module_1.PeopleModule,
