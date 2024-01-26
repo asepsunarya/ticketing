@@ -8,7 +8,7 @@ import { adminServer, authServer } from './functions-http';
 
 dotenv.config();
 
-const PORT = 1000;
+const PORT = 80;
 const server: Express = express();
 
 server.use(

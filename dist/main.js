@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const functions_http_1 = require("./functions-http");
 dotenv.config();
-const PORT = 1000;
+const PORT = 80;
 const server = express();
 server.use(expressFileUpload({
     limits: { fileSize: 8 * (1024 * 1024) },
