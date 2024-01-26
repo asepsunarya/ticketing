@@ -1,0 +1,60 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CoreAuthModule = void 0;
+const mongoosePaginate = require("mongoose-paginate-v2");
+const common_1 = require("@nestjs/common");
+const auth_service_1 = require("./auth.service");
+const passport_1 = require("@nestjs/passport");
+const jwt_1 = require("@nestjs/jwt");
+const mongoose_1 = require("@nestjs/mongoose");
+const local_strategy_1 = require("./strategies/local.strategy");
+const constants_1 = require("./constants");
+const jwt_strategy_1 = require("./strategies/jwt.strategy");
+const jwt_admin_strategy_1 = require("./strategies/jwt-admin.strategy");
+const user_model_1 = require("../user/user.model");
+const user_service_1 = require("../user/user.service");
+let CoreAuthModule = exports.CoreAuthModule = class CoreAuthModule {
+};
+exports.CoreAuthModule = CoreAuthModule = __decorate([
+    (0, common_1.Module)({
+        imports: [
+            passport_1.PassportModule,
+            jwt_1.JwtModule.register({
+                global: true,
+                secret: constants_1.jwtConstants.secret,
+            }),
+            mongoose_1.MongooseModule.forFeatureAsync([
+                {
+                    name: 'user',
+                    useFactory: () => {
+                        const schema = user_model_1.UserSchema;
+                        schema.plugin(mongoosePaginate);
+                        return schema;
+                    },
+                },
+            ]),
+        ],
+        providers: [
+            auth_service_1.AuthService,
+            user_service_1.UserService,
+            local_strategy_1.LocalStrategy,
+            jwt_strategy_1.JwtStrategy,
+            jwt_admin_strategy_1.JwtAdminStrategy,
+        ],
+        exports: [
+            auth_service_1.AuthService,
+            user_service_1.UserService,
+            local_strategy_1.LocalStrategy,
+            jwt_strategy_1.JwtStrategy,
+            jwt_admin_strategy_1.JwtAdminStrategy,
+            mongoose_1.MongooseModule,
+        ],
+    })
+], CoreAuthModule);
+//# sourceMappingURL=core.auth.module.js.map
